@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jovian Careers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+
+    <h1 id="mainh">Jovian Careers</h1>
+
+    <div class="hero-about">
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='image.avif') }}" alt="Careers">
+        </div>
+
+        <div class="about">
+            <h2>About Jovian</h2>
+            <p>
+                Jovian Careers helps people find jobs they love by connecting talent with the right opportunities.
+                We focus on skill-based hiring, career growth, and making the job search clear and accessible for everyone.
+            </p>
+        </div>
+    </div>
+
+    <div class="job-openings">
+        <h2>Open Positions</h2>
+
+        <div class="job-list">
+            {% for job in Jobs %}
+            <div class="job-card">
+                <div class="job-info">
+                    <h4>{{ job.title }}</h4>
+                    <p><b>Location:</b> {{ job.location }}</p>
+                </div>
+                <button class="apply-btn">Apply</button>
+            </div>
+            {% endfor %}
+        </div>
+
+        <button class="contact-btn">Contact Us</button>
+    </div>
+
+</body>
+</html>
