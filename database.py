@@ -16,3 +16,15 @@ def load_jobs_from_db():
         jobs=[dict(row._mapping)for row in result_all]
 
     return jobs
+
+def create_tables():
+    with engine.connect() as conn:
+        conn.execute(text("""
+            Create table if not exists jobs(
+                     id serial primary key,
+                     location varchar(250),
+                     title varchar(250),
+                     responsiblities varchar (2000),
+                     requiremetns varchar(2000))
+        """))
+        conn.commit()

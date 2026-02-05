@@ -1,12 +1,12 @@
 from flask import Flask, render_template, jsonify
-from database import load_jobs_from_db
+from database import load_jobs_from_db,create_tables
 from sqlalchemy import text
 
 
-
-
-
 app = Flask(__name__)
+
+with app.app_context():
+    create_tables()
 
 
 @app.route("/")
