@@ -22,7 +22,7 @@ def list_jobs():
 
 @app.route("/seed")
 def seed():
-    with engine.connect() as conn:
+    with engine.begin() as conn:
         conn.execute(text("""
             INSERT INTO jobs (title, location, responsibilities, requirements)
             VALUES
@@ -31,7 +31,6 @@ def seed():
             ('Frontend Developer', 'Mumbai', 'Build UI', 'HTML, CSS, JavaScript, React'),
             ('Backend Developer', 'Hyderabad', 'Build APIs', 'Flask, PostgreSQL')
             """))
-        conn.commit()
         return "jobs added succesfully!"
 
 
