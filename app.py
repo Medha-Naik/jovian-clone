@@ -13,6 +13,7 @@ with app.app_context():
 @app.route("/")
 def homepage():
     jobs=load_jobs_from_db()
+    print(f"jobs loaded {jobs}")
     return render_template("index.html",Jobs=jobs)
 
 @app.route("/api/jobs")

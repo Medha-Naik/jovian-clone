@@ -24,7 +24,7 @@ def create_tables():
                      id serial primary key,
                      location varchar(250),
                      title varchar(250),
-                     responsiblities varchar (2000),
-                     requiremetns varchar(2000))
+                     responsibilities varchar (2000),
+                     requirements varchar(2000))
         """))
         conn.commit()
