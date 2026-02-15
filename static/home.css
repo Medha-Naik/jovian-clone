@@ -1,41 +1,58 @@
+/* ================================= */
+/* GLOBAL RESET */
+/* ================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #ffffff;
+    color: #222;
+}
 
-.navbar{
+/* ================================= */
+/* NAVBAR */
+/* ================================= */
+
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px 80px;
     background-color: white;
 
-    box-shadow: 0 4px 14px rgba(0,0,0, 0.08);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
-.logo{
+
+.logo {
     font-size: 26px;
     font-weight: 600;
     text-decoration: none;
     color: #1a237e;
 }
-.nav-links{
+
+.nav-links {
     list-style: none;
     display: flex;
     gap: 32px;
 }
-.nav-links a{
+
+.nav-links a {
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 500;
     color: #333;
     position: relative;
 }
-.nav-links a::after{
+
+.nav-links a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -46,13 +63,18 @@
     transition: width 0.25s ease;
 }
 
-.nav-links a:hover::after{
+.nav-links a:hover::after {
     width: 100%;
 }
-.nav-links a:hover{
+
+.nav-links a:hover {
     color: #1a237e;
 }
-/* Main heading */
+
+/* ================================= */
+/* MAIN HEADING */
+/* ================================= */
+
 #mainh {
     display: flex;
     justify-content: center;
@@ -65,7 +87,10 @@
     color: #1a237e;
 }
 
-/* Hero section */
+/* ================================= */
+/* HERO SECTION */
+/* ================================= */
+
 .hero-about {
     display: flex;
     align-items: center;
@@ -79,7 +104,6 @@
     max-width: 1100px;
 }
 
-/* Image */
 .hero-image {
     flex: 1;
 }
@@ -97,7 +121,6 @@
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
-/* About text */
 .about {
     flex: 1;
     max-width: 480px;
@@ -115,7 +138,10 @@
     color: #444;
 }
 
-/* Job Openings */
+/* ================================= */
+/* JOB OPENINGS SECTION */
+/* ================================= */
+
 .job-openings {
     max-width: 1100px;
     margin: 60px auto;
@@ -132,7 +158,6 @@
     margin-bottom: 32px;
 }
 
-/* Job list */
 .job-list {
     display: flex;
     flex-direction: column;
@@ -140,7 +165,6 @@
     margin-bottom: 32px;
 }
 
-/* Job card */
 .job-card {
     background-color: white;
     padding: 18px 24px;
@@ -151,9 +175,14 @@
     align-items: center;
 
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Job info */
+.job-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
 .job-info h4 {
     font-size: 1.1rem;
     color: #1a237e;
@@ -165,7 +194,10 @@
     color: #555;
 }
 
-/* Apply button */
+/* ================================= */
+/* BUTTONS */
+/* ================================= */
+
 .apply-btn {
     padding: 8px 18px;
     font-size: 0.9rem;
@@ -177,6 +209,7 @@
 
     cursor: pointer;
     transition: all 0.25s ease;
+    text-decoration: none;
 }
 
 .apply-btn:hover {
@@ -184,7 +217,6 @@
     color: white;
 }
 
-/* Contact button */
 .contact-btn {
     padding: 12px 28px;
     font-size: 1rem;
@@ -197,6 +229,7 @@
 
     cursor: pointer;
     transition: background-color 0.25s ease, transform 0.2s ease;
+    text-decoration: none;
 }
 
 .contact-btn:hover {
@@ -204,7 +237,123 @@
     transform: translateY(-2px);
 }
 
+/* ================================= */
+/* JOB DETAIL PAGE */
+/* ================================= */
+
+.job-detail-container {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.job-detail-card {
+    width: 100%;
+    max-width: 800px;
+
+    background: linear-gradient(145deg, #eef1ff, #f7f8ff);
+    padding: 56px 64px;
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(26, 35, 126, 0.12);
+    border: 1px solid rgba(26, 35, 126, 0.08);
+
+    text-align: center;
+}
+
+.job-title {
+    font-size: 2.4rem;
+    color: #1a237e;
+    margin-bottom: 18px;
+}
+
+.job-location {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 36px;
+}
+
+.job-section {
+    margin-bottom: 36px;
+}
+
+.job-section h3 {
+    font-size: 1.4rem;
+    color: #2b2b2b;
+    margin-bottom: 14px;
+}
+
+.job-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #444;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.job-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+/* ================================= */
+/* OTHER JOBS SECTION */
+/* ================================= */
+
+.other-jobs {
+    max-width: 900px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.other-jobs h2 {
+    font-size: 1.8rem;
+    color: #1a237e;
+    margin-bottom: 30px;
+}
+
+.other-job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.other-job-card {
+    background: white;
+    padding: 18px 24px;
+    border-radius: 12px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.other-job-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.other-job-card h4 {
+    color: #1a237e;
+    margin-bottom: 4px;
+}
+
+.other-job-card p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* ================================= */
 /* FOOTER */
+/* ================================= */
+
 .footer {
     background-color: #f7f9fc;
     margin-top: 80px;
@@ -217,21 +366,19 @@
     padding: 0 80px;
 
     display: flex;
-    flex-direction: column;   /* STACK text then links */
+    flex-direction: column;
     align-items: center;
-    gap: 12px;                /* space between lines */
+    gap: 12px;
 }
 
-/* Footer text */
 .footer p {
     font-size: 0.9rem;
     color: #555;
 }
 
-/* Footer links */
 .footer-links {
-    list-style: none;         /* no bullets */
-    display: flex;            /* links in ONE row */
+    list-style: none;
+    display: flex;
     gap: 24px;
 }
 
@@ -245,3 +392,33 @@
     text-decoration: underline;
 }
 
+/* ================================= */
+/* RESPONSIVE */
+/* ================================= */
+
+@media (max-width: 768px) {
+
+    .navbar,
+    .hero-about,
+    .job-openings,
+    .footer-content,
+    .job-detail-container {
+        padding: 20px;
+    }
+
+    .hero-about {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .job-card,
+    .other-job-card {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .job-actions {
+        flex-direction: column;
+    }
+}
