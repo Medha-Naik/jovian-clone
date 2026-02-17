@@ -12,7 +12,7 @@
     </div>
     <ul class="nav-links">
         <li><a href="/#jobs">Jobs</a></li>
-        <li><a href="/#contact">Contact</a></li>
+        <li><a href="mailto:medhanaik1404@gmail.com?subject=Inquiry%20from%20Jovian%20Careers">Contact</a></li>
     </ul>
 </nav>
 
@@ -36,37 +36,15 @@
             <p>{{ job.requirements }}</p>
         </div>
 
-        <div class="job-actions">
-            <a href="/" class="apply-btn">Back to Jobs</a>
-
-            <a href="mailto:medhanaik1409@gmail.com?subject=Application%20for%20{{ job.title | urlencode }}&body=Hi%2C%0D%0A%0D%0AI%20would%20like%20to%20apply%20for%20the%20{{ job.title | urlencode }}%20role.%0D%0A%0D%0AName%3A%20%0D%0AResume%20Link%3A%20%0D%0ALinkedIn%3A%20"
-               class="contact-btn">
-               Apply Now
-            </a>
+        <!-- Application Form Section -->
+        <div class="job-section application-section">
+            <h3>Apply for this Position</h3>
+            {% include 'application_form.html' %}
         </div>
 
-    </div>
-</div>
-
-<div class="other-jobs">
-    <h2>Other Open Positions</h2>
-
-    <div class="other-job-list">
-        {% for other in jobs %}
-            {% if other.id != job.id %}
-            <div class="other-job-card">
-                <div>
-                    <h4>{{ other.title }}</h4>
-                    <p>{{ other.location }}</p>
-                </div>
-
-                <a href="{{ url_for('show_job', id=other.id) }}"
-                   class="apply-btn">
-                   View
-                </a>
-            </div>
-            {% endif %}
-        {% endfor %}
+        <div class="job-actions">
+            <a href="/" class="apply-btn">Back to Jobs</a>
+        </div>
     </div>
 </div>
 

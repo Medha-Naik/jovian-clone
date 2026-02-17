@@ -1,6 +1,6 @@
-from flask import Flask, render_template, jsonify
-from database import load_jobs_from_db, create_tables, load_job_from_db
-from sqlalchemy import text
+from flask import Flask, render_template, jsonify,request
+from database import load_jobs_from_db, create_tables, load_job_from_db,save_application_to_db,load_all_applications
+from email_service import send_application_confirmation
 from database import engine
 
 app = Flask(__name__)
@@ -15,7 +15,6 @@ with app.app_context():
 @app.route("/")
 def homepage():
     jobs = load_jobs_from_db()
-    print("HOMEPAGE JOBS:", jobs)
     return render_template("index.html", Jobs=jobs)
 
 
@@ -43,45 +42,46 @@ def show_job(id):
     return render_template("jobpage.html", job=job, jobs=jobs)
 
 
-# =========================
-# SEED (SAFE VERSION)
-# =========================
-@app.route("/seed")
-def seed():
-    if not app.debug:
-        return "Not allowed", 403
 
-    with engine.begin() as conn:
-        # Completely clear table + reset ID counter
-        conn.execute(text("TRUNCATE TABLE jobs RESTART IDENTITY"))
-
-        # Insert fresh jobs
-        conn.execute(text("""
-            INSERT INTO jobs (title, location, responsibilities, requirements)
-            VALUES
-            ('Data Analyst', 'Bengaluru', 'Analyze data and create reports', 'Python, SQL, Excel'),
-            ('Data Scientist', 'Delhi', 'Build ML models', 'Python, ML, Statistics'),
-            ('Frontend Developer', 'Mumbai', 'Build UI', 'HTML, CSS, JavaScript, React'),
-            ('Backend Developer', 'Hyderabad', 'Build APIs', 'Flask, PostgreSQL')
-        """))
-
-    return "Database reseeded cleanly!"
+@app.route("/job/<id>/apply", methods=['POST'])
+def apply_to_job(id):
 
 
-# =========================
-# RESET DATABASE
-# =========================
-@app.route("/reset")
-def reset():
-    if not app.debug:
-        return "Not allowed", 403
 
-    with engine.begin() as conn:
-        conn.execute(text("DROP TABLE IF EXISTS jobs CASCADE"))
-        create_tables()
+    job=load_job_from_db(id)
+    if not job:
+        return "Job not found",404
+    data={
+        'job_id':id,
+        'full_name':request.form.get('full_name'),
+        'email':request.form.get('email'),
+        'linkedin': request.form.get('linkedin'),
+        'resume': request.form.get('resume'),
+        'cover_letter': request.form.get('cover_letter')
+    }
+    application_id=save_application_to_db(data)
+    
+    try:
+        # Email to applicant
+        
+        result1=send_application_confirmation(
+            applicant_email=data['email'],
+            applicant_name=data['full_name'],
+            job_title=job['title'],
+            application_id=application_id
+        )
+    except Exception as e:
+        print(f"Email error: {str(e)}")
+        
 
-    return "Database fully reset!"
+    data['application_id']=application_id
+    return render_template('application_submitted.html',application=data)
 
+
+@app.route("/admin/applications")
+def admin_applications():
+    applications=load_all_applications()
+    return render_template("admin_applications.html",applications=applications)
 
 if __name__ == "__main__":
     app.run(debug=True)

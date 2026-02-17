@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-le">
+        <a href="/" class="logo">Jovian</a>
+    </div>
+    <ul class="nav-links">
+        <li><a href="/">Jobs</a></li>
+        <li><a href="/admin/applications">Applications</a></li>
+    </ul>
+</nav>
+
+<div class="admin-container">
+    <div class="admin-header">
+        <h1>All Applications</h1>
+        <p class="application-count">Total: {{ applications|length }} applications</p>
+    </div>
+
+    {% if applications %}
+        <div class="applications-table-container">
+            <table class="applications-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Job ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Resume</th>
+                        <th>LinkedIn</th>
+                        <th>Applied On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for app in applications %}
+                    <tr>
+                        <td>#{{ app.id }}</td>
+                        <td>{{ app.job_id }}</td>
+                        <td>{{ app.full_name }}</td>
+                        <td><a href="mailto:{{ app.email }}">{{ app.email }}</a></td>
+                        <td>{{ app.phone or 'N/A' }}</td>
+                        <td>
+                            {% if app.resume %}
+                                <a href="{{ app.resume }}" target="_blank" class="link-btn">View</a>
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if app.linkedin %}
+                                <a href="{{ app.linkedin }}" target="_blank" class="link-btn">View</a>
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>{{ app.created_at.strftime('%Y-%m-%d %H:%M') if app.created_at else 'N/A' }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="no-applications">
+            <p>No applications yet.</p>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<form class="application-form" action="/job/{{job['id']}}/apply" method="POST">
+    
+    <div class="form-group">
+        <label for="full_name">Full Name *</label>
+        <input type="text" id="full_name" name="full_name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="phone" required>
+    </div>
+
+    <div class="form-group">
+        <label for="linkedin">LinkedIn Profile</label>
+        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+    </div>
+
+    <div class="form-group">
+        <label for="resume">Resume/CV Link *</label>
+        <input type="url" id="resume" name="resume" placeholder="Google Drive, Dropbox, or portfolio link" required>
+    </div>
+
+    <div class="form-group">
+        <label for="cover_letter">Why are you interested in this role?</label>
+        <textarea id="cover_letter" name="cover_letter" rows="5" placeholder="Tell us why you'd be a great fit..."></textarea>
+    </div>
+
+    <button type="submit" class="apply-btn submit-btn">Submit Application</button>
+</form>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Application Submitted</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-le">
+        <a href="/" class="logo">Jovian</a>
+    </div>
+    <ul class="nav-links">
+        <li><a href="/#jobs">Jobs</a></li>
+        <li><a href="/#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="job-detail-container">
+    <div class="job-detail-card">
+        <h1>✅ Application Submitted Successfully!</h1>
+        <p>Thank you for applying! We'll review your application and get back to you soon.</p>
+        
+        <div class="application-summary">
+            <h3>Application Details:</h3>
+            
+            <div class="detail-row">
+                <h4>Full Name</h4>
+                <div>{{ application['full_name'] }}</div>
+            </div>
+            
+            <div class="detail-row">
+                <h4>Email</h4>
+                <div>{{ application['email'] }}</div>
+            </div>
+            
+            <div class="detail-row">
+                <h4>Phone</h4>
+                <div>{{ application['phone'] }}</div>
+            </div>
+            
+            <div class="detail-row">
+                <h4>LinkedIn</h4>
+                <div>
+                    {% if application['linkedin'] %}
+                        <a href="{{ application['linkedin'] }}" target="_blank">{{ application['linkedin'] }}</a>
+                    {% else %}
+                        Not provided
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="detail-row">
+                <h4>Resume Link</h4>
+                <div>
+                    {% if application['resume'] %}
+                        <a href="{{ application['resume'] }}" target="_blank">{{ application['resume'] }}</a>
+                    {% else %}
+                        Not provided
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="detail-row">
+                <h4>Cover Letter</h4>
+                <div>{{ application['cover_letter'] or 'Not provided' }}</div>
+            </div>
+        </div>
+        
+        <div class="job-actions">
+            <a href="/" class="apply-btn">Back to Jobs</a>
+            <a href="/job/{{ application['job_id'] }}" class="contact-btn">View Job</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

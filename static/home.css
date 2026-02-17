@@ -422,3 +422,220 @@ body {
         flex-direction: column;
     }
 }
+
+/* Application Form Styles */
+.application-section {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px solid #222;
+}
+
+.application-form {
+    max-width: 600px;
+    margin: 1.5rem 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+/* Application Submitted Page */
+.application-summary {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.detail-row {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-row h4 {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-row div {
+    color: #333;
+    font-size: 1.1rem;
+    word-break: break-word;
+}
+
+.detail-row a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+.detail-row a:hover {
+    text-decoration: underline;
+}
+
+/* Admin Applications Page */
+.admin-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.admin-header {
+    margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.application-count {
+    color: #666;
+    font-size: 1rem;
+}
+
+.applications-table-container {
+    overflow-x: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.applications-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+}
+
+.applications-table thead {
+    background: #f8f9fa;
+}
+
+.applications-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #e0e0e0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.applications-table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+}
+
+.applications-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.applications-table td {
+    padding: 1rem;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.applications-table td:first-child {
+    font-weight: 600;
+    color: #4a90e2;
+}
+
+.applications-table a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+.applications-table a:hover {
+    text-decoration: underline;
+}
+
+.link-btn {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #4a90e2;
+    color: white !important;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    text-decoration: none !important;
+    transition: background 0.3s;
+}
+
+.link-btn:hover {
+    background: #357abd;
+    text-decoration: none !important;
+}
+
+.no-applications {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.no-applications p {
+    color: #666;
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 0 1rem;
+    }
+    
+    .applications-table {
+        font-size: 0.85rem;
+    }
+    
+    .applications-table th,
+    .applications-table td {
+        padding: 0.75rem 0.5rem;
+    }
+}
